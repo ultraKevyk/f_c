@@ -26,15 +26,15 @@ for fish in fish_list:
 
 views = Blueprint('views', __name__)
 
-@views.route('/', methods=['POST', 'GET'])
-def home():
+@views.route('/home', methods=['POST', 'GET'])
+def about():
     return render_template("home.html")
 
-@views.route('/', methods=['POST', 'GET'])
+@views.route('/output', methods=['POST', 'GET'])
 def output():
     return render_template("output.html")
 
-@views.route('/calc', methods=['GET', 'POST'])
+@views.route('/', methods=['GET', 'POST'])
 def calc():
     if request.method == 'POST':
         inputed_area = request.form.get('areas')
