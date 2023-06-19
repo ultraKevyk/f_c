@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <title>{% block title %}HOME{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #011f4b;
+      }
+      h1, h2, h3, p, button {
+        color: auto;
+        font-size: 25px;
+        font-family: 'Montserrat', sans-serif;
+      }
+      form {
+        font-size: 25px;
+        padding: 100px;
+        border-radius: 5px;
+        border: 1px solid #b3cde0;
+        background-image: url('static/picc.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      select {
+        background-color: #95E0F5;
+        font-size: 20x;
+        padding: 12px;
+        border: 1px solid #b3cde0;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+
+      }
+
+      button[type=submit] {
+        background-color: #F87217;
+        color: black;
+        padding: 12px 30px;
+        border: 2px solid #EB5406;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 30px;
+      }
+
+      button[type=submit]:hover {
+        background-color: #FA4304;
+        border: 2px solid #EB5406;
+      }
+      .my-box {
+       background-color: #9FCCE7;
+       border: 1px solid #0057D9;
+       padding: 14px;
+       border-radius: 5px;
+      }
+      .green-box {
+       background-color: #5CC359;
+       border: 1px solid #05A400;
+       padding: 14px;
+       border-radius: 5px;
+      }
+      .red-box {
+       background-color: #F16565;
+       border: 1px solid #EC3232;
+       padding: 14px;
+       border-radius: 5px;
+      }
+      .other-box {
+       background-color: #F9D079;
+       border: 1px solid #FBBE3E;
+       padding: 14px;
+       border-radius: 5px;
+      }
+      .wrapper {
+       height: 100px;
+       width: 100%;
+       position: relative;
+      }
+
+    .wrapper div {
+      height: 60px;
+      width: 60px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 50px;
+      position: relative;
+      top: 10%;
+      left: 10%;
+
+    }
+    div .dot {
+      height: 10px;
+      width: 10px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      top: 20%;
+      right: 20%;
+    }
+    .wrapper div:nth-child(1) {
+      top: 20%;
+      left: 20%;
+      animation: animate 8s linear infinite;
+    }
+    .wrapper div:nth-child(2) {
+      top: 60%;
+      left: 80%;
+      animation: animate 10s linear infinite;
+    }
+    .wrapper div:nth-child(3) {
+      top: 40%;
+      left: 40%;
+      animation: animate 5s linear infinite;
+    }
+    .wrapper div:nth-child(4) {
+      top: 66%;
+      left: 30%;
+      animation: animate 7s linear infinite;
+    }
+    .wrapper div:nth-child(5) {
+      top: 90%;
+      left: 10%;
+      animation: animate 9s linear infinite;
+    }
+    .wrapper div:nth-child(6) {
+      top: 30%;
+      left: 60%;
+      animation: animate 5s linear infinite;
+    }
+    .wrapper div:nth-child(7) {
+      top: 70%;
+      left: 20%;
+      animation: animate 8s linear infinite;
+    }
+    .wrapper div:nth-child(8) {
+      top: 75%;
+      left: 60%;
+      animation: animate 10s linear infinite;
+    }
+    .wrapper div:nth-child(9) {
+      top: 50%;
+      left: 50%;
+      animation: animate 6s linear infinite;
+    }
+    .wrapper div:nth-child(10) {
+      top: 45%;
+      left: 20%;
+      animation: animate 10s linear infinite;
+    }
+    .wrapper div:nth-child(11) {
+      top: 10%;
+      left: 90%;
+      animation: animate 9s linear infinite;
+    }
+    .wrapper div:nth-child(12) {
+      top: 20%;
+      left: 70%;
+      animation: animate 7s linear infinite;
+    }
+    .wrapper div:nth-child(13) {
+      top: 20%;
+      left: 20%;
+      animation: animate 8s linear infinite;
+    }
+    .wrapper div:nth-child(14) {
+      top: 60%;
+      left: 5%;
+      animation: animate 6s linear infinite;
+    }
+    .wrapper div:nth-child(15) {
+      top: 90%;
+      left: 80%;
+      animation: animate 9s linear infinite;
+    }
+    @keyframes animate {
+      0% {
+        transform: scale(0) translateY(0) rotate(70deg);
+      }
+      100% {
+        transform: scale(1.3) translateY(-100px) rotate(360deg);
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-blue">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar">
+          <div class="navbar-nav mx-auto">
+              <a class="nav-item nav-link" id="home" href="/">Hlavní stránka</a>
+              <a class="nav-item nav-link" id="calc" href="/calc">Kalkulačka</a>
+          </div>
+      </div>
+    </nav>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+    {% if category == "error"%}
+    <div class="alert alert-danger alert dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alert dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="container text-center mx-auto">
+  <div class="wrapper">
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+      <div><span class="dot"></span></div>
+  </div>
+  {% block content%}
+  {% endblock %}
+</div>
+
+    <!-- Odkaz na Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

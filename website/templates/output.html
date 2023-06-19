@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<body>
+
+<h1></h1>
+    <p class="my-box">Ryba: {{ inputed_fish }}</p>
+    <p class="my-box">Název revíru: {{ name }}</p>
+    <p class="my-box">Číslo revíru: {{ number }}</p>
+    <p class="my-box">Plocha revíru: {{ size }} ha</p>
+    <p class="other-box">Průměrná váha ulovené ryby: {{ weight }} kg</p>
+    {% if o_weight == "více" %}
+    <p class="green-box">To je {{ o_weight }} než průměrná váha, která je {{ avrg_w }} kg</p>
+    {% else %}
+    <p class="red-box">To je {{ o_weight }} než průměrná váha, která je {{ avrg_w }} kg</p>
+    {% endif %}
+    <p class="other-box">Výtěžnost ryby na revíru: {{ ratio }} ryb / ha / rok</p>
+    {% if o_ratio == "více" %}
+    <p class="green-box">To je {{ o_ratio }} než průměrná výtěžnost ryby, která je: {{ avrg_r }} ryb / ha / rok</p>
+    {% else %}
+    <p class="red-box">To je {{ o_ratio }} než průměrná výtěžnost ryby, která je: {{ avrg_r }} ryb / ha / rok</p>
+    {% endif %}
+
+<button type="submit" class="btn btn-success" onclick="window.location.href='/calc'">Nové zadání</button>
+</body>
+
+
+
+{% endblock %}
