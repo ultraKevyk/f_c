@@ -5,7 +5,7 @@ import pickle
 import os
 from back import fish_ratio, average_weight, global_average_weight, global_average_ratio
 
-data_dir = r"C:\Python\fishing_calc\VE\website\data\downloaded_data\\"
+data_dir = "./website/data/downloaded_data/"
 size_dict = {}
 name_dict = {}
 

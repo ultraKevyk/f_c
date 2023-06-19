@@ -4,7 +4,7 @@ import pickle
 import os
 
 
-data_dir = r"C:\Python\Fishing_calculator\Lib\site-packages\fishing\\"
+data_dir = "./website/data/downloaded_data/"
 size_dict = {}
 name_dict = {}
 
