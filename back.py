@@ -6,6 +6,11 @@ import os
 
 data_dir = "./website/data/downloaded_data/"
 
+clean_fish = {"kapr": "Kapr obecný", "lín": "Lín", "cejn": "Cejn velký", "tloust":"Jelec tloušť", "okoun": "Okoun říční", "parma":"Parma velká", "ostroretka": "Ostroretka",
+              "podoustev": "Podoustev", "štika": "Štika obecná", "candát": "Candát obecný", "sumec": "Sumec velký", "úhoř": "Úhoř říční", "pstruh obecný": "Pstruh obecný",
+              "pstruh duhový": "Pstruh duhový", "lipan": "Lipan podhorní", "siven": "Siven americký", "bolen": "bolen dravý", "maréna peleď" :"Maréna peleď",
+              "hlavatka": "Hlavatka", "amur" :"Amur velký", "tolstolobik": "Tolstolobik", "karas": "Karas", "mník": "Mník jednovousý", "jelec jesen": "Jelec jesen"
+}
 
 def average_weight(area, fish):     # calculate average weight of specific fish on specific area
     with open(data_dir + area + ".csv", "r", encoding="utf-8") as file:

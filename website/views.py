@@ -3,7 +3,7 @@ import requests
 import csv
 import pickle
 import os
-from back import fish_ratio, average_weight, global_average_weight, global_average_ratio
+from back import fish_ratio, average_weight, global_average_weight, global_average_ratio, clean_fish
 
 data_dir = "./website/data/downloaded_data/"
 size_dict = {}
@@ -39,7 +39,7 @@ def calc():
     if request.method == 'POST':
         inputed_area = request.form.get('areas')
         inputed_fish = request.form.get('fish')
-
+        fish_cl = clean_fish[inputed_fish]
         if inputed_area == "999":
             for fish in fish_list:
                 if fish == inputed_fish:
@@ -63,8 +63,8 @@ def calc():
                         if counter == 5:
                             break            
                     print(weight_outp)
-                    return render_template('output_all.html', inputed_fish=inputed_fish, a_out = area_outp, w_out=weight_outp)
-        
+                    return render_template('output_all.html', inputed_fish=fish_cl, a_out = area_outp, w_out=weight_outp)
+
         else:
             for key, value in name_dict.items():
                 if key == inputed_area:
@@ -89,7 +89,7 @@ def calc():
                         else:
                             o_ratio = "méně"
                         avrg_r = round(avrg_ratios[inputed_fish], 2)
-                        return render_template('output.html', inputed_fish=inputed_fish, size=size, name=name, number=number,
+                        return render_template('output.html', inputed_fish=fish_cl, size=size, name=name, number=number,
                                                weight=weight, ratio=ratio, o_weight=o_weight, o_ratio=o_ratio, avrg_w=avrg_w,
                                                avrg_r=avrg_r)
                     else:

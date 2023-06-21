@@ -7,10 +7,15 @@
 <body>
 
 <h1></h1>
-    <p class="my-box">Ryba: {{ inputed_fish }}</p>
-    <p class="my-box">Název revíru: {{ name }}</p>
-    <p class="my-box">Číslo revíru: {{ number }}</p>
-    <p class="my-box">Plocha revíru: {{ size }} ha</p>
+    <h3>Ryba: </h3>
+    <p class="my-box">{{ inputed_fish }}</p>
+    <h3>Název revíru: </h3>
+    <p class="my-box">{{ name }}</p>
+    <h3>Číslo revíru: </h3>
+    <p class="my-box">{{ number }}</p>
+    <h3>Plocha revíru: </h3>
+    <p class="my-box">{{ size }} ha</p>
+    <h3>Info</h3>
     <p class="other-box">Průměrná váha ulovené ryby: {{ weight }} kg</p>
     {% if o_weight == "více" %}
     <p class="green-box">To je {{ o_weight }} než průměrná váha, která je {{ avrg_w }} kg</p>
