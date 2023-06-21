@@ -5,8 +5,7 @@ import os
 
 
 data_dir = "./website/data/downloaded_data/"
-size_dict = {}
-name_dict = {}
+
 
 def average_weight(area, fish):     # calculate average weight of specific fish on specific area
     with open(data_dir + area + ".csv", "r", encoding="utf-8") as file:

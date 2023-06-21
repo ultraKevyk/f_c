@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<body>
+
+
+<p class="other-box">Ryba: {{ inputed_fish }}</p>
+<h3>Revíry s nejlepším průměrným úlovkem (podle váhy):</h3>
+
+{% for area in a_out %}
+    <p class="green-box">{{ loop.index }}. {{ area }} - {{ w_out[loop.index - 1] }} kg</p>
+{% endfor %}
+
+<button type="submit" class="btn btn-success" onclick="window.location.href='/'">Nové zadání</button>
+</body>
+
+{% endblock %}
