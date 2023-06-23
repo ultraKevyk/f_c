@@ -63,8 +63,37 @@ def calc():
                         if counter == 5:
                             break            
                     print(weight_outp)
-                    return render_template('output_all.html', inputed_fish=fish_cl, a_out = area_outp, w_out=weight_outp)
-
+                    return render_template('output_all.html', inputed_fish=fish_cl, a_out = area_outp, w_out=weight_outp,
+                                           formul_1 = "průměrné váhy", formul_2 = "kg")
+                
+                
+        if inputed_area == "777":
+            for fish in fish_list:
+                if fish == inputed_fish:
+                    best_ratio_dict = {}
+                    for key, value in name_dict.items():
+                        if fish_ratio(key, fish, size_dict[key]):
+                            best_ratio_dict[key] = fish_ratio(key, fish, size_dict[key])
+                    try:
+                        max_avrg_ratio = max(best_ratio_dict.values())
+                    except Exception:
+                        continue
+                    sorted_dict = sorted(best_ratio_dict.items(), key=lambda x: x[1], reverse=True)
+                    
+                    area_outp = []
+                    ratio_outp = []
+                    counter = 0
+                    for value in sorted_dict:
+                        counter += 1
+                        area_outp.append(name_dict[value[0]])
+                        ratio_outp.append(round(value[1], 2))
+                        if counter == 5:
+                            break
+                    print(ratio_outp)
+                    return render_template('output_all.html', inputed_fish=fish_cl, a_out=area_outp, w_out=ratio_outp,
+                                           formul_1 = "kusů na hektar", formul_2 = "kusů / hektar / rok")
+        
+        
         else:
             for key, value in name_dict.items():
                 if key == inputed_area:
