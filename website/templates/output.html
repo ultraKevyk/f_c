@@ -7,29 +7,30 @@
 <body>
 
 <h1></h1>
-    <h3>Ryba: </h3>
-    <p class="my-box">{{ inputed_fish }}</p>
-    <h3>Název revíru: </h3>
-    <p class="my-box">{{ name }}</p>
-    <h3>Číslo revíru: </h3>
-    <p class="my-box">{{ number }}</p>
-    <h3>Plocha revíru: </h3>
-    <p class="my-box">{{ size }} ha</p>
-    <h3>Info</h3>
-    <p class="other-box">Průměrná váha ulovené ryby: {{ weight }} kg</p>
+
+    <p class="other-box">{{ inputed_fish }}</p>
+    <h3>Revír: </h3>
+    <p class="my-box">Název: {{ name }} <br>Číslo: {{ number }}<br>Plocha: {{ size }} ha</p>
+    <h3>Průměrná váha ryby na revíru: </h3>
+
     {% if o_weight == "více" %}
+    <p class="other-box">{{ weight }} kg</p>
     <p class="green-box">To je {{ o_weight }} než průměrná váha, která je {{ avrg_w }} kg</p>
+
     {% else %}
+    <p class="other-box">{{ weight }} kg</p>
     <p class="red-box">To je {{ o_weight }} než průměrná váha, která je {{ avrg_w }} kg</p>
+
     {% endif %}
-    <p class="other-box">Výtěžnost ryby na revíru: {{ ratio }} ryb / ha / rok</p>
+    <h3>Výtěžnost ryby na revíru: </h3>
+    <p class="other-box">{{ ratio }} ryb / ha / rok</p>
     {% if o_ratio == "více" %}
     <p class="green-box">To je {{ o_ratio }} než průměrná výtěžnost ryby, která je: {{ avrg_r }} ryb / ha / rok</p>
     {% else %}
     <p class="red-box">To je {{ o_ratio }} než průměrná výtěžnost ryby, která je: {{ avrg_r }} ryb / ha / rok</p>
     {% endif %}
 
-<button type="submit" class="btn btn-success" onclick="window.location.href='/'">Nové zadání</button>
+<button type="submit" class="btn btn-success" onclick="window.location.href='/'">Zpět</button>
 </body>
 
 

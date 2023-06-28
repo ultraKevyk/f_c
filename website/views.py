@@ -39,7 +39,10 @@ def calc():
     if request.method == 'POST':
         inputed_area = request.form.get('areas')
         inputed_fish = request.form.get('fish')
-        fish_cl = clean_fish[inputed_fish]
+        if inputed_fish:
+            fish_cl = clean_fish[inputed_fish]
+        else:
+            flash("Vyber rybu!", category='success')
         if inputed_area == "999":
             for fish in fish_list:
                 if fish == inputed_fish:
@@ -52,7 +55,7 @@ def calc():
                     except Exception:
                         continue
                     sorted_dict = sorted(best_fish_dict.items(), key=lambda x: x[1], reverse=True)
-                    
+
                     area_outp = []
                     weight_outp = []
                     counter = 0
@@ -60,13 +63,12 @@ def calc():
                         counter += 1
                         area_outp.append(name_dict[value[0]])
                         weight_outp.append(round(value[1], 2))
-                        if counter == 5:
-                            break            
-                    print(weight_outp)
+                        if counter == 10:
+                            break
                     return render_template('output_all.html', inputed_fish=fish_cl, a_out = area_outp, w_out=weight_outp,
-                                           formul_1 = "průměrné váhy", formul_2 = "kg")
-                
-                
+                                           formul_1 = " průměrné váhy", formul_2 = "kg")
+
+
         if inputed_area == "777":
             for fish in fish_list:
                 if fish == inputed_fish:
@@ -79,7 +81,7 @@ def calc():
                     except Exception:
                         continue
                     sorted_dict = sorted(best_ratio_dict.items(), key=lambda x: x[1], reverse=True)
-                    
+
                     area_outp = []
                     ratio_outp = []
                     counter = 0
@@ -87,13 +89,12 @@ def calc():
                         counter += 1
                         area_outp.append(name_dict[value[0]])
                         ratio_outp.append(round(value[1], 2))
-                        if counter == 5:
+                        if counter == 10:
                             break
-                    print(ratio_outp)
                     return render_template('output_all.html', inputed_fish=fish_cl, a_out=area_outp, w_out=ratio_outp,
-                                           formul_1 = "kusů na hektar", formul_2 = "kusů / hektar / rok")
-        
-        
+                                           formul_1 = "kusů", formul_2 = "kusů / hektar / rok")
+
+
         else:
             for key, value in name_dict.items():
                 if key == inputed_area:
@@ -112,7 +113,7 @@ def calc():
 
                     o_ratio = ""
                     if fish_ratio(key, inputed_fish, size_dict[key]):
-                        ratio = round(fish_ratio(key, inputed_fish, size_dict[key]), 2)
+                        ratio = round(fish_ratio(key, inputed_fish, size_dict[key]), 3)
                         if float(fish_ratio(key, inputed_fish, size_dict[key]) > float(avrg_ratios[inputed_fish])):
                             o_ratio = "více"
                         else:
@@ -122,7 +123,7 @@ def calc():
                                                weight=weight, ratio=ratio, o_weight=o_weight, o_ratio=o_ratio, avrg_w=avrg_w,
                                                avrg_r=avrg_r)
                     else:
-                        flash(f"No {inputed_fish} caught on {value} yet!", category='success')
+                        flash(f"Zatím žádný záznam:  {fish_cl} - {value}", category='success')
 
 
                 
