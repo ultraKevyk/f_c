@@ -8,6 +8,8 @@ from back import fish_ratio, average_weight, global_average_weight, global_avera
 data_dir = "./website/data/downloaded_data/"
 size_dict = {}
 name_dict = {}
+number_of_ranks = 7
+
 
 with open(data_dir + "SIZES.pkl", 'rb') as f:
     size_dict = pickle.load(f)
@@ -55,7 +57,7 @@ def calc():
                     except Exception:
                         continue
                     sorted_dict = sorted(best_fish_dict.items(), key=lambda x: x[1], reverse=True)
-
+                    reversed_dict = sorted(best_fish_dict.items(), key=lambda x: x[1], reverse=False)
                     area_outp = []
                     weight_outp = []
                     counter = 0
@@ -63,10 +65,20 @@ def calc():
                         counter += 1
                         area_outp.append(name_dict[value[0]])
                         weight_outp.append(round(value[1], 2))
-                        if counter == 10:
+                        if counter == number_of_ranks:
                             break
-                    return render_template('output_all.html', inputed_fish=fish_cl, a_out = area_outp, w_out=weight_outp,
-                                           formul_1 = " průměrné váhy", formul_2 = "kg")
+                    area_outp_b = []
+                    weight_outp_b = []
+                    counter = 0
+                    for value in reversed_dict:
+                        counter += 1
+                        area_outp_b.append(name_dict[value[0]])
+                        weight_outp_b.append(round(value[1], 2))
+                        if counter == number_of_ranks:
+                            break
+
+                    return render_template('output_all.html', inputed_fish=fish_cl, a_out = area_outp, a_out_w=area_outp_b,
+                                           w_out=weight_outp, w_out_w=weight_outp_b, formul_1 = " průměrné váhy", formul_2 = "kg")
 
 
         if inputed_area == "777":
@@ -81,6 +93,7 @@ def calc():
                     except Exception:
                         continue
                     sorted_dict = sorted(best_ratio_dict.items(), key=lambda x: x[1], reverse=True)
+                    reversed_dict = sorted(best_ratio_dict.items(), key=lambda x: x[1], reverse=False)
 
                     area_outp = []
                     ratio_outp = []
@@ -89,10 +102,20 @@ def calc():
                         counter += 1
                         area_outp.append(name_dict[value[0]])
                         ratio_outp.append(round(value[1], 2))
-                        if counter == 10:
+                        if counter == number_of_ranks:
                             break
-                    return render_template('output_all.html', inputed_fish=fish_cl, a_out=area_outp, w_out=ratio_outp,
-                                           formul_1 = "kusů", formul_2 = "kusů / hektar / rok")
+                    area_outp_b = []
+                    ratio_outp_b = []
+                    counter = 0
+                    for value in reversed_dict:
+                        counter += 1
+                        area_outp_b.append(name_dict[value[0]])
+                        ratio_outp_b.append(round(value[1], 2))
+                        if counter == number_of_ranks:
+                            break
+
+                    return render_template('output_all.html', inputed_fish=fish_cl, a_out=area_outp, a_out_w=area_outp_b,
+                                           w_out=ratio_outp, w_out_w=ratio_outp_b, formul_1 = "kusů", formul_2 = "kusů / hektar / rok")
 
 
         else:
