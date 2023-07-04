@@ -1,6 +1,4 @@
-import requests
 import csv
-import pickle
 import os
 
 
@@ -9,8 +7,7 @@ data_dir = "./website/data/downloaded_data/"
 clean_fish = {"kapr": "Kapr obecný", "lín": "Lín obecný", "cejn": "Cejn velký", "tloust":"Jelec tloušť", "okoun": "Okoun říční", "parma":"Parma obecná", "ostroretka": "Ostroretka stěhovavá",
               "podoustev": "Podoustev říční", "štika": "Štika obecná", "candát": "Candát obecný", "sumec": "Sumec velký", "úhoř": "Úhoř říční", "pstruh obecný": "Pstruh obecný",
               "pstruh duhový": "Pstruh duhový", "lipan": "Lipan podhorní", "siven": "Siven americký", "bolen": "Bolen dravý", "maréna peleď" :"Maréna peleď",
-              "hlavatka": "Hlavatka obecná", "amur" :"Amur bílý", "tolstolobik": "Tolstolobik bílý", "karas": "Karas", "mník": "Mník jednovousý", "jelec jesen": "Jelec jesen"
-}
+              "hlavatka": "Hlavatka obecná", "amur" :"Amur bílý", "tolstolobik": "Tolstolobik bílý", "karas": "Karas", "mník": "Mník jednovousý", "jelec jesen": "Jelec jesen"}
 
 def average_weight(area, fish):     # calculate average weight of specific fish on specific area
     with open(data_dir + area + ".csv", "r", encoding="utf-8") as file:

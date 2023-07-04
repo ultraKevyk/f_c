@@ -1,8 +1,5 @@
 from flask import Blueprint, render_template, flash, request
-import requests
-import csv
 import pickle
-import os
 from back import fish_ratio, average_weight, global_average_weight, global_average_ratio, clean_fish
 
 data_dir = "./website/data/downloaded_data/"
