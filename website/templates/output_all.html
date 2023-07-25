@@ -5,7 +5,6 @@
 {% block content %}
 
 <body>
-
 <h3>Ryba: </h3>
 <p class="other-box">{{ inputed_fish }}</p>
 <h3>Revíry s nejlepším úlovkem (podle {{ formul_1 }}):</h3>
@@ -19,6 +18,10 @@
 {% endfor %}
 
 <button type="submit" class="btn btn-success" onclick="window.location.href='/'">Zpět</button>
+<h1></h1>
+<div class="map-responsive">
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1eUHI7bLX2pJDlhbyhm6y_azccjeahz0&ehbc=2E312F" width="640" height="480" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
 </body>
 
 {% endblock %}

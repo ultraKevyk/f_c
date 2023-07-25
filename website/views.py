@@ -5,7 +5,7 @@ from back import fish_ratio, average_weight, global_average_weight, global_avera
 data_dir = "./website/data/downloaded_data/"
 size_dict = {}
 name_dict = {}
-number_of_ranks = 7
+number_of_ranks = 5
 
 
 with open(data_dir + "SIZES.pkl", 'rb') as f:
