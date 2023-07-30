@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1></h1>
-<form class="areaSelection" method="POST">
+<form class="areaSelection" id="randomform" method="POST">
   <select class="fishForm" name="fish" id="fish" role="menu">
     <option value="" disabled selected hidden>Vyber druh ryby...</option>
     <option value="amur" class="dropdown-item">Amur</option>
@@ -168,6 +168,31 @@
   <h1></h1>
   <button type="submit" class="btn btn-success">Vyber</button>
 </form>
+<script>
+    var backgroundUrls = [
+      'static/b1.png',
+      'static/b2.png',
+      'static/b3.png',
+      'static/b4.png',
+      'static/b5.png',
+      'static/b6.png',
+      'static/b7.png',
+      'static/b8.png',
+      'static/b9.png',
+      'static/b10.png',
+    ];
+
+    function showRandomBackground() {
+      var form = document.getElementById('randomform');
+      var randomIndex = Math.floor(Math.random() * backgroundUrls.length);
+      var randomBackgroundUrl = backgroundUrls[randomIndex];
+      form.style.backgroundImage = 'url(' + randomBackgroundUrl + ')';
+    }
+    document.addEventListener('DOMContentLoaded', showRandomBackground);
+    document.getElementById('random-background-form').addEventListener('click', showRandomBackground);
+
+    showRandomBackground();
+</script>
 <h1></h1>
 <div class="map-responsive">
 <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1eUHI7bLX2pJDlhbyhm6y_azccjeahz0&ehbc=2E312F" width="640" height="480" frameborder="0" style="border:0" allowfullscreen></iframe>
