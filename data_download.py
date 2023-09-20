@@ -10,7 +10,7 @@ webs = ["https://www.crsplzen.cz/rubrika/mimopstruhove-reviry-zpc-us/",
 "https://www.crsplzen.cz/rubrika/mimopstruhove-reviry-zpc-us/?p=2"]
 size_dict = {}
 name_dict = {}
-data_dir = ""
+data_dir = "./website/data/downloaded_data/2022/"
 
 
 def get_links(url):     # gathering all links on page
@@ -36,15 +36,15 @@ def get_table(url):     # getting table of fishes/catches/weights
     rows = soup.find_all('tr')
     for row in rows:
         data = row.find_all('td')
-        if (len(data) == 11):
-            fish.append(data[0].get_text())
-            pieces.append(data[4].get_text())
-            weight.append(data[5].get_text())
+        if (len(data) == 15):
+            fish.append(((data[1].get_text()).lower()).strip())
+            pieces.append(data[2].get_text())
+            weight.append(data[3].get_text())
     if fish and pieces and weight:
-        for i in range(2):
-            fish.pop(0)
-            pieces.pop(0)
-            weight.pop(0)
+        # for i in range(2):
+        #     fish.pop(0)
+        #     pieces.pop(0)
+        #     weight.pop(0)
         return fish, pieces, weight
 
 
@@ -117,17 +117,24 @@ def save_dictionary(dictionary, name_of_dict):      # saving dictionry to file w
         print("Dictionary " + name_of_dict + " saved.")
 
 
-def get_all_data(source):       # Getting all data (:-P)
+def get_all_data(source):
     print("Downloading data...")
     for url in source:
         for link in (get_links(url).split('#')):
             if link:
                 if get_table(link):
                     district_table = (list(get_table(link)))
+                    print(district_table)
                     for i in range(len(district_table[0])):
                         for j in range(len(district_table)):
+                            # if "tloušť" in district_table[j][i]:
+                            #     district_table[j][i] = district_table[j][i].replace("tloušť", "tloust")
                             if "," in district_table[j][i]:
                                 district_table[j][i] = district_table[j][i].replace(",", ".")
+                            # if " " in district_table[2][i]:
+                            #     district_table[2][i] = district_table[2][i].replace(" ", "")
+                            # if " " in district_table[1][i]:
+                            #     district_table[1][i] = district_table[1][i].replace(" ", "")
                     save_csv_table(get_title(link, 0), district_table)
                     size_dict[get_title(link, 0)] = get_size(link)
                     name_dict[get_title(link, 0)] = get_title(link, 1)
@@ -135,3 +142,6 @@ def get_all_data(source):       # Getting all data (:-P)
     save_dictionary(list_of_fish, "FISH")
     save_dictionary(size_dict, "SIZES")
     save_dictionary(name_dict, "NAMES")
+
+
+get_all_data(webs)

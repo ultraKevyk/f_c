@@ -11,23 +11,39 @@
     <p class="other-box">{{ inputed_fish }}</p>
     <h3>Revír: </h3>
     <p class="my-box">Název: {{ name }} <br>Číslo: {{ number }}<br>Plocha: {{ size }} ha</p>
+
     <h3>Průměrná váha ryby na revíru: </h3>
-
+    <p class="other-box">{{ weight }} kg</p>
     {% if o_weight == "více" %}
-    <p class="other-box">{{ weight }} kg</p>
     <p class="green-box">To je {{ o_weight }} než průměrná váha, která je {{ avrg_w }} kg</p>
-
     {% else %}
-    <p class="other-box">{{ weight }} kg</p>
     <p class="red-box">To je {{ o_weight }} než průměrná váha, která je {{ avrg_w }} kg</p>
-
     {% endif %}
+    {% if tendence_data == True %}
+    {% if tendence_weight == True %}
+    <p class="green-box" title="V porovnání s předešlým rokem">Tendence: Stoupající</p>
+    {% else %}
+    <p class="red-box" title="V porovnání s předešlým rokem">Tendence: Klesající</p>
+    {% endif %}
+    {% else %}
+    <p class="my-box" title="V porovnání s předešlým rokem">Tendence: Data nejsou k dispozici</p>
+    {% endif %}
+
     <h3>Výtěžnost ryby na revíru: </h3>
     <p class="other-box">{{ ratio }} ryb / ha / rok</p>
     {% if o_ratio == "více" %}
     <p class="green-box">To je {{ o_ratio }} než průměrná výtěžnost ryby, která je: {{ avrg_r }} ryb / ha / rok</p>
     {% else %}
     <p class="red-box">To je {{ o_ratio }} než průměrná výtěžnost ryby, která je: {{ avrg_r }} ryb / ha / rok</p>
+    {% endif %}
+    {% if tendence_data == True %}
+    {% if tendence_ratio == True %}
+    <p class="green-box" title="V porovnání s předešlým rokem">Tendence: Stoupající</p>
+    {% else %}
+    <p class="red-box" title="V porovnání s předešlým rokem">Tendence: Klesající</p>
+    {% endif %}
+    {% else %}
+    <p class="my-box" title="V porovnání s předešlým rokem">Tendence: Data nejsou k dispozici</p>
     {% endif %}
 
 <button type="submit" class="btn btn-success" onclick="window.location.href='/'">Zpět</button>
