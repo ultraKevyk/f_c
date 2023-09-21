@@ -3,7 +3,7 @@ import pickle, os
 from back import fish_ratio, average_weight, global_average_weight, global_average_ratio, clean_fish
 
 data_dir = "./website/data/downloaded_data/"
-data22_dir = r"C:\Python\fishing_calc\VE\website\data\downloaded_data\2022\\"
+data22_dir = "./website/data/downloaded_data/2022/"
 size_dict = {}
 name_dict = {}
 number_of_ranks = 7

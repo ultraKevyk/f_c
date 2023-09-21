@@ -41,10 +41,6 @@ def get_table(url):     # getting table of fishes/catches/weights
             pieces.append(data[2].get_text())
             weight.append(data[3].get_text())
     if fish and pieces and weight:
-        # for i in range(2):
-        #     fish.pop(0)
-        #     pieces.pop(0)
-        #     weight.pop(0)
         return fish, pieces, weight
 
 
@@ -127,14 +123,8 @@ def get_all_data(source):
                     print(district_table)
                     for i in range(len(district_table[0])):
                         for j in range(len(district_table)):
-                            # if "tloušť" in district_table[j][i]:
-                            #     district_table[j][i] = district_table[j][i].replace("tloušť", "tloust")
                             if "," in district_table[j][i]:
                                 district_table[j][i] = district_table[j][i].replace(",", ".")
-                            # if " " in district_table[2][i]:
-                            #     district_table[2][i] = district_table[2][i].replace(" ", "")
-                            # if " " in district_table[1][i]:
-                            #     district_table[1][i] = district_table[1][i].replace(" ", "")
                     save_csv_table(get_title(link, 0), district_table)
                     size_dict[get_title(link, 0)] = get_size(link)
                     name_dict[get_title(link, 0)] = get_title(link, 1)
