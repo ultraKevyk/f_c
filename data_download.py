@@ -10,7 +10,7 @@ webs = ["https://www.crsplzen.cz/rubrika/mimopstruhove-reviry-zpc-us/",
 "https://www.crsplzen.cz/rubrika/mimopstruhove-reviry-zpc-us/?p=2"]
 size_dict = {}
 name_dict = {}
-data_dir = "./website/data/downloaded_data/2022/"
+data_dir = "./website/data/downloaded_data/2023/"
 
 
 def get_links(url):     # gathering all links on page
